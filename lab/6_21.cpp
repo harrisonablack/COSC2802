@@ -1,25 +1,23 @@
 #include <iostream>
 using namespace std;
 
-int main(){
-	double loan;
-	double payment;
-	double interest;
-	int c;
+int main() {
+	double loan, payment, rate;
+	cin >> loan >> payment >> rate;
 
-	cin >> loan;
-	cin >> payment;
-	cin >> interest;
+	int months = 0;
 
-	while (loan-payment>0.0){
-		loan += (loan * interest);
-		loan -= payment;
-		c++;
+	if (loan * (1 + rate) - payment >= loan) {
+		cout << "Cannot pay off loan" << endl;
+		return 0;
 	}
 
-	cout << c << " payments" << endl;
+	while (loan > 0.0) {
+		loan = loan * (1 + rate); 
+		loan = loan - payment;           
+		months++;
+	}
 
-	if ()
-
+	cout << months << " payment" << (months == 1 ? "" : "s") << endl;
 	return 0;
 }
